@@ -1,0 +1,29 @@
+import random
+computer_choice = random.randint(0, 2)
+user_choice = input("Choose Rock, Paper, or Scissors.")
+keep_going = True
+while keep_going == True:
+    if user_choice == 'Rock':
+        if computer_choice == 1:
+            print('Computer chose paper, you lost.')
+        elif computer_choice == 2:
+            print('Computer chose scissors, you win.')
+        elif computer_choice == 0:
+            print('Computer chose rock, draw.')
+    elif user_choice == 'Paper':
+        if computer_choice == 2:
+            print('Computer chose scissors, you lost.')
+        elif computer_choice == 0:
+            print('Computer chose scissors, you win.')
+        elif computer_choice == 1:
+            print('Computer chose paper, draw.')
+    elif user_choice == 'Scissors':
+        if computer_choice == 0:
+            print('Computer chose rock, you lost.')
+        elif computer_choice == 1:
+            print('Computer chose paper, you win.')
+        elif computer_choice == 2:
+            print('Computer chose scissors, draw')
+    end = input('Would you like to stop?')
+    if end == 'Yes' or 'yes':
+            keep_going = False
