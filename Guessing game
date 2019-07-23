@@ -1,0 +1,51 @@
+import random
+
+keep_guessing = True
+player_guess = 0
+attempts = 0
+guessed_list = []
+invalid_number = False
+game = True
+highscore = 0
+round = 1
+int(round)
+while game == True:
+    computer_choice = random.randint(1, 10)
+    keep_guessing = True
+    print("Round", round)
+    while keep_guessing == True:
+        player_guess = input('Guess a number from 1-10 ')
+
+        #Trying to prevent invalid guesses so they don't create an error when being converted to integers
+
+        #if player_guess != '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' or '10':
+            #invalid_number = True
+            #while invalid_number == True:
+               #player_guess = input("Please enter a valid number ")
+               #if player_guess != '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' or '10':
+                    #pass
+               #if player_guess == '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' or '10':
+                    #invalid_number = False
+        player_guess = int(player_guess)
+        if player_guess == computer_choice:
+            attempts = attempts + 1
+            print("You guessed the number which was", computer_choice, "in", attempts, "attempts.")
+            if round > 1:
+                if attempts < highscore:
+                    highscore = attempts
+                    print("You got a new highscore of", highscore,"!")
+            elif round == 1:
+                attempts = highscore
+            guessed_list = []
+            keep_guessing = False
+        if player_guess in guessed_list:
+            print("You already have guessed", player_guess, "try again")
+        elif player_guess != computer_choice:
+            attempts = attempts + 1
+            guessed_list.append(player_guess)
+            print("That wasn't the number, guess again.")
+            if player_guess > computer_choice:
+                print("The number is lower than your guess.")
+            elif player_guess < computer_choice:
+                print("The number is higher than your guess.")
+    round = round + 1
